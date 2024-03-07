@@ -36,7 +36,7 @@ namespace ClientConsole
                     sender.Connect(localEndPoint);
 
                     // We print EndPoint information to show that we are connected
-                    System.Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint.ToString()}");
+                    System.Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint?.ToString()}");
 
                     // #4: Create a message that we will send to the server
                     // System.Console.Write("Write a message: ");
