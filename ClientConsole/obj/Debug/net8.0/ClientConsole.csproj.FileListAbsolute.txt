@@ -1,0 +1,28 @@
+/Users/tobiaskjaer/Repoes/ClientConsole/bin/Debug/net8.0/ClientConsole
+/Users/tobiaskjaer/Repoes/ClientConsole/bin/Debug/net8.0/ClientConsole.deps.json
+/Users/tobiaskjaer/Repoes/ClientConsole/bin/Debug/net8.0/ClientConsole.runtimeconfig.json
+/Users/tobiaskjaer/Repoes/ClientConsole/bin/Debug/net8.0/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/ClientConsole/bin/Debug/net8.0/ClientConsole.pdb
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.AssemblyInfoInputs.cache
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.AssemblyInfo.cs
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.csproj.CoreCompileInputs.cache
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/refint/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.pdb
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ClientConsole.genruntimeconfig.cache
+/Users/tobiaskjaer/Repoes/ClientConsole/obj/Debug/net8.0/ref/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/bin/Debug/net8.0/ClientConsole
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/bin/Debug/net8.0/ClientConsole.deps.json
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/bin/Debug/net8.0/ClientConsole.runtimeconfig.json
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/bin/Debug/net8.0/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/bin/Debug/net8.0/ClientConsole.pdb
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.AssemblyInfoInputs.cache
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.AssemblyInfo.cs
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.csproj.CoreCompileInputs.cache
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/refint/ClientConsole.dll
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.pdb
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ClientConsole.genruntimeconfig.cache
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ClientConsole/obj/Debug/net8.0/ref/ClientConsole.dll
