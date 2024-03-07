@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Quic;
 using System.Net.Sockets;
 using System.Text;
 
@@ -26,8 +27,55 @@ namespace ServerConsole
             Socket listener = new Socket(iPAddress.AddressFamily, 
                 SocketType.Stream, ProtocolType.Tcp);
             
-            
+            try
+            {
+                // #3: We associate network address to the Server Socket by using Bind() method
+                // All clients that want to connect to this Server Socket must know this network address 
+                listener.Bind(localEndPoint);
 
+                // #4: We create the client list that will want to connect to the server 
+                // by using the Listen() method
+                listener.Listen(10);
+
+                // Data variable to break loop
+                string? data = null;
+
+                while(data != "quit")
+                {
+                    Console.WriteLine("Waiting connection ... ");
+
+                    // Suspend while waiting for incoming connections
+                    // #5: By using the Accept() method the server will accept the connection of the client
+                    Socket clienSocket = listener.Accept();
+
+                    // Data buffer
+                    byte[] bytes = new byte[1024];
+                    
+                    while(data != "quit")
+                    {
+                        int numByte = clienSocket.Receive(bytes);
+
+                        data += Encoding.ASCII.GetString(bytes, 0, numByte);                 
+
+                    }
+
+                    Console.WriteLine($"Text received -> {data} ");
+                    byte[] message = Encoding.ASCII.GetBytes("Test Server");
+
+                    // #6: Send a message to the Client using Send() method
+                    clienSocket.Send(message);
+
+                    // #7: Close client Socket using the Close() method 
+                    // After closing we can use the closed Socket for a new Client connection
+                    clienSocket.Shutdown(SocketShutdown.Both);
+                    clienSocket.Close();
+                }
+
+
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.ToString());
+            }
         }
         
     }
