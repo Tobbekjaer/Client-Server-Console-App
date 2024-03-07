@@ -57,18 +57,19 @@ namespace ServerConsole
                     {
                         int numByte = clienSocket.Receive(bytes);
 
-                        data += Encoding.ASCII.GetString(bytes, 0, numByte);                 
+                        data += Encoding.ASCII.GetString(bytes, 0, numByte);
+                        break;                  
 
                     }
 
-                    Console.WriteLine($"Text received -> {data} ");
+                    Console.WriteLine($"Client: {data} ");
 
                     // #6: Create a message that we will send to the server
-                    Console.Write("(Server) Write a message: ");
+                    Console.Write("Server: ");
                     string message = Console.ReadLine();
 
                     // #7: Send a message to the Client using Send() method
-                    byte[] messagSent = Encoding.ASCII.GetBytes(message);
+                    byte[] messageSent = Encoding.ASCII.GetBytes(message);
                     clienSocket.Send(messageSent);
 
                     // #8: Close client Socket using the Close() method 

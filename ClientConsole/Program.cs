@@ -39,7 +39,7 @@ namespace ClientConsole
                     Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint?.ToString()}");
 
                     // #4: Create a message that we will send to the server
-                    Console.Write("(Client) Write a message: ");
+                    Console.Write("Client: ");
                     string message = Console.ReadLine();
 
                     byte[] messageSent = Encoding.ASCII.GetBytes(message);
@@ -51,7 +51,7 @@ namespace ClientConsole
                     // #5: We receive the message using the Receive() method
                     // This method returns number of bytes received, which we will use to convert to a string
                     int bytesReceived = sender.Receive(messageReceived);
-                    System.Console.WriteLine($"Message from server -> {Encoding.ASCII.GetString(messageReceived, 0, bytesReceived)}");
+                    System.Console.WriteLine($"Server: {Encoding.ASCII.GetString(messageReceived, 0, bytesReceived)}");
 
                     // #6: Close Socket using the Close() method
                     sender.Shutdown(SocketShutdown.Both);
@@ -62,19 +62,16 @@ namespace ClientConsole
                 catch (ArgumentNullException ane) {
                     
                     Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                
+                }              
                 catch (SocketException se) {
                     
                     Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-                
+                }                
                 catch (Exception e) {
                     Console.WriteLine("Unexpected exception : {0}", e.ToString());
                 }
             } 
-        catch (Exception e) {
-            
+        catch (Exception e) {           
             Console.WriteLine(e.ToString());
         }
 
