@@ -16,7 +16,7 @@ namespace ClientConsole
         }
 
         // ExecuteClient() Method
-        static void ExecuteClient()
+        public static void ExecuteClient()
         {
             try
             {
