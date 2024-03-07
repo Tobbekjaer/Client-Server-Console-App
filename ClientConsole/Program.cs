@@ -36,13 +36,13 @@ namespace ClientConsole
                     sender.Connect(localEndPoint);
 
                     // We print EndPoint information to show that we are connected
-                    System.Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint?.ToString()}");
+                    Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint?.ToString()}");
 
                     // #4: Create a message that we will send to the server
-                    // System.Console.Write("Write a message: ");
-                    // string message = Console.ReadLine();
+                    Console.Write("(Client) Write a message: ");
+                    string message = Console.ReadLine();
 
-                    byte[] messageSent = Encoding.ASCII.GetBytes("Test Client<EOF>");
+                    byte[] messageSent = Encoding.ASCII.GetBytes(message);
                     int byteSent = sender.Send(messageSent);
 
                     // Data buffer

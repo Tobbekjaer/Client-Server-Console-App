@@ -13,7 +13,7 @@ namespace ServerConsole
         static void Main(string[] args)
         {
             ExecuteServer();
-        }
+        } 
 
         public static void ExecuteServer()
         {
@@ -35,7 +35,7 @@ namespace ServerConsole
 
                 // #4: We create the client list that will want to connect to the server 
                 // by using the Listen() method
-                listener.Listen(10);
+                listener.Listen(10); 
 
                 // Data variable to break loop
                 string? data = null;
@@ -47,6 +47,8 @@ namespace ServerConsole
                     // Suspend while waiting for incoming connections
                     // #5: By using the Accept() method the server will accept the connection of the client
                     Socket clienSocket = listener.Accept();
+
+                    Console.WriteLine("Connection established ... ");
 
                     // Data buffer
                     byte[] bytes = new byte[1024];
@@ -60,18 +62,20 @@ namespace ServerConsole
                     }
 
                     Console.WriteLine($"Text received -> {data} ");
-                    byte[] message = Encoding.ASCII.GetBytes("Test Server");
 
-                    // #6: Send a message to the Client using Send() method
-                    clienSocket.Send(message);
+                    // #6: Create a message that we will send to the server
+                    Console.Write("(Server) Write a message: ");
+                    string message = Console.ReadLine();
 
-                    // #7: Close client Socket using the Close() method 
+                    // #7: Send a message to the Client using Send() method
+                    byte[] messagSent = Encoding.ASCII.GetBytes(message);
+                    clienSocket.Send(messageSent);
+
+                    // #8: Close client Socket using the Close() method 
                     // After closing we can use the closed Socket for a new Client connection
                     clienSocket.Shutdown(SocketShutdown.Both);
                     clienSocket.Close();
                 }
-
-
             }
             catch (Exception e) {
                 Console.WriteLine(e.ToString());
