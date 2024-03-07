@@ -12,3 +12,4 @@
 /Users/tobiaskjaer/Repoes/Client-Server Console App/ServerConsole/obj/Debug/net8.0/ServerConsole.pdb
 /Users/tobiaskjaer/Repoes/Client-Server Console App/ServerConsole/obj/Debug/net8.0/ServerConsole.genruntimeconfig.cache
 /Users/tobiaskjaer/Repoes/Client-Server Console App/ServerConsole/obj/Debug/net8.0/ref/ServerConsole.dll
+/Users/tobiaskjaer/Repoes/Client-Server Console App/ServerConsole/obj/Debug/net8.0/ServerConsole.sourcelink.json
