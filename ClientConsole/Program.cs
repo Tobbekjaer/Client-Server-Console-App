@@ -38,31 +38,40 @@ namespace ClientConsole
                     // We print EndPoint information to show that we are connected
                     Console.WriteLine($"Socket connected to -> {sender.RemoteEndPoint?.ToString()}");
 
-                    // #4: Create a message that we will send to the server
-                    Console.Write("Client: ");
-                    string message = Console.ReadLine();
+                    // Loop logic to send and receive messages
+                    string data;
+                    do
+                    {
+                        // Send a message to the server
+                        Console.Write("Client: ");
+                        string message = Console.ReadLine();
+                        byte[] messageSent = Encoding.ASCII.GetBytes(message);
+                        int byteSent = sender.Send(messageSent);
 
-                    byte[] messageSent = Encoding.ASCII.GetBytes(message);
-                    int byteSent = sender.Send(messageSent);
+                        // Break out of the loop if "quit" command is sent
+                        if (message.ToLower() == "quit")
+                            break;
 
-                    // Data buffer
-                    byte[] messageReceived = new byte[1024];
+                        // Receive server's response
+                        byte[] messageReceived = new byte[1024];
+                        int bytesReceived = sender.Receive(messageReceived);
+                        data = Encoding.ASCII.GetString(messageReceived, 0, bytesReceived);
 
-                    // #5: We receive the message using the Receive() method
-                    // This method returns number of bytes received, which we will use to convert to a string
-                    int bytesReceived = sender.Receive(messageReceived);
-                    System.Console.WriteLine($"Server: {Encoding.ASCII.GetString(messageReceived, 0, bytesReceived)}");
+                        // Display server's response
+                        Console.WriteLine($"Server: {data}");
 
-                    // #6: Close Socket using the Close() method
+                    } while (data.ToLower() != "quit");
+
+                    // Close Socket gracefully after conversation ends
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
-
                 }
                 // Manage of Socket's Exceptions
                 catch (ArgumentNullException ane) {
                     
                     Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }              
+                }
+                
                 catch (SocketException se) {
                     
                     Console.WriteLine("SocketException : {0}", se.ToString());
@@ -71,7 +80,8 @@ namespace ClientConsole
                     Console.WriteLine("Unexpected exception : {0}", e.ToString());
                 }
             } 
-        catch (Exception e) {           
+        catch (Exception e) {
+            
             Console.WriteLine(e.ToString());
         }
 

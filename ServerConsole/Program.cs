@@ -37,51 +37,50 @@ namespace ServerConsole
                 // by using the Listen() method
                 listener.Listen(10); 
 
-                // Data variable to break loop
-                string? data = null;
+                Console.WriteLine("Waiting connection ... ");
 
-                while(data != "quit")
+                // Suspend while waiting for incoming connections
+                // #5: By using the Accept() method the server will accept the connection of the client
+                Socket clienSocket = listener.Accept();
+
+                Console.WriteLine("Connected ... ");
+
+                // Data buffer
+                byte[] bytes = new byte[1024];
+
+                // Receive client's message and respond
+                string data;
+                do
                 {
-                    Console.WriteLine("Waiting connection ... ");
+                    // Receive client's message
+                    int numByte = clienSocket.Receive(bytes);
+                    data = Encoding.ASCII.GetString(bytes, 0, numByte);
+                    Console.WriteLine($"Client: {data}");
 
-                    // Suspend while waiting for incoming connections
-                    // #5: By using the Accept() method the server will accept the connection of the client
-                    Socket clienSocket = listener.Accept();
+                    // Check if client wants to quit
+                    if (data.ToLower() == "quit")
+                        break;
 
-                    Console.WriteLine("Connection established ... ");
-
-                    // Data buffer
-                    byte[] bytes = new byte[1024];
-                    
-                    while(data != "quit")
-                    {
-                        int numByte = clienSocket.Receive(bytes);
-
-                        data += Encoding.ASCII.GetString(bytes, 0, numByte);
-                        break;                  
-
-                    }
-
-                    Console.WriteLine($"Client: {data} ");
-
-                    // #6: Create a message that we will send to the server
+                    // Get server's response
                     Console.Write("Server: ");
                     string message = Console.ReadLine();
 
-                    // #7: Send a message to the Client using Send() method
+                    // Send response to the client
                     byte[] messageSent = Encoding.ASCII.GetBytes(message);
                     clienSocket.Send(messageSent);
 
-                    // #8: Close client Socket using the Close() method 
-                    // After closing we can use the closed Socket for a new Client connection
-                    clienSocket.Shutdown(SocketShutdown.Both);
-                    clienSocket.Close();
-                }
+                } while (data.ToLower() != "quit");             
+                // #9: Close client Socket using the Close() method 
+                // After closing we can use the closed Socket for a new Client connection
+                clienSocket.Shutdown(SocketShutdown.Both);
+                clienSocket.Close();
+            }
+            catch (SocketException se) {
+                Console.WriteLine(se.ToString());
             }
             catch (Exception e) {
                 Console.WriteLine(e.ToString());
             }
         }
-        
     }
 }
